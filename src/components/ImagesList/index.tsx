@@ -1,16 +1,9 @@
-import { useImagesQuery } from "../hooks/useImagesQuery";
-import { useVirtualizedLayout } from "../hooks/useVirtualizedLayout";
-import { ImageItem } from "./ImageItem";
-
-export interface ImageNode {
-  id: string;
-  title: string;
-  picture: string;
-  likesCount: number;
-  liked: boolean;
-  price: number;
-  author: string;
-}
+import { useImagesQuery } from "../../hooks/useImagesQuery";
+import { useVirtualizedLayout } from "../../hooks/useVirtualizedLayout";
+import { ImageNode } from "../../models/ImageNode";
+import { ImageItem } from "../ImageItem";
+import "./styles.css";
+import loader from "../../assets/loader.svg";
 
 const ImagesList = () => {
   const { data, loading, error, handleLoadMore, handleLike } = useImagesQuery();
@@ -20,12 +13,26 @@ const ImagesList = () => {
       handleLoadMore,
     });
 
-  if (loading && !data) return null;
+  if (loading && !data)
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          width: "100%",
+        }}
+      >
+        <img src={loader} alt="loader" className="loader" />
+      </div>
+    );
   if (error) return null;
 
   return (
     <div
       ref={parentRef}
+      data-testid="images-list-container"
       style={{
         flex: 1,
         width: "100%",

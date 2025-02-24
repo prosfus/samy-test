@@ -1,4 +1,4 @@
-import { ImageNode } from "../../ImagesList";
+import { ImageNode } from "../../../models/ImageNode";
 import { HearthIcon } from "../../HearthIcon";
 
 interface ImageLikesProps {
@@ -32,6 +32,7 @@ export const ImageLikes = ({
           style={{
             height: "24px",
             width: "24px",
+            cursor: "pointer",
           }}
         >
           <HearthIcon
@@ -75,6 +76,7 @@ export const ImageLikes = ({
           style={{
             height: "24px",
             width: "24px",
+            cursor: "pointer",
           }}
         >
           <HearthIcon

@@ -25,7 +25,7 @@ export default function Topbar() {
         <img src={searchIcon} alt="Search" height={"20px"} />
         <input
           type="text"
-          placeholder="You're looking for something?"
+          placeholder="Are you looking for something?"
           onChange={handleChange}
           className={styles.searchInput}
         />

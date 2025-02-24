@@ -1,46 +1,12 @@
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 
 import { useReactiveVar } from "@apollo/client";
 
 import { useQuery } from "@apollo/client";
 import { filterVar } from "../main";
-import { ImageNode } from "../components/ImagesList";
-
-const GET_IMAGES = gql`
-  query GetImages($after: String, $first: Int, $title: String) {
-    images(after: $after, first: $first, title: $title) {
-      edges {
-        cursor
-        node {
-          id
-          title
-          picture
-          likesCount
-          liked
-          price
-          author
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
-    }
-  }
-`;
-
-const LIKE_IMAGE = gql`
-  mutation LikeImage($input: LikeImageInput!) {
-    likeImage(input: $input) {
-      clientMutationId
-      image {
-        id
-        liked
-        likesCount
-      }
-    }
-  }
-`;
+import { GET_IMAGES } from "../graphql/queries";
+import { LIKE_IMAGE } from "../graphql/queries";
+import { ImageNode } from "../models/ImageNode";
 
 export interface ImagesData {
   images: {

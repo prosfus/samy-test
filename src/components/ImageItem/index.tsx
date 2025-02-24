@@ -1,7 +1,15 @@
-import { ImageItemProps } from "./types";
 import { ImagePrice } from "./components/ImagePrice";
 import { ImageLikes } from "./components/ImageLikes";
 import { ImageDetails } from "./components/ImageDetails";
+import { ImageNode } from "../../models/ImageNode";
+
+export interface ImageItemProps {
+  node: ImageNode;
+  itemWidth: number;
+  smallView: boolean;
+  ITEM_HEIGHT: number;
+  handleLike: (node: ImageNode) => void;
+}
 
 export const ImageItem = ({
   node,
